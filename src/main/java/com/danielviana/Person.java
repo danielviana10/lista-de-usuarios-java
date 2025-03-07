@@ -1,0 +1,48 @@
+package com.danielviana;
+
+public class Person {
+    private int idPerson;
+    private String namePerson;
+    private String emailPerson;
+
+    public Person() {
+    }
+
+    public Person(String namePerson, String emailPerson) {
+        super();
+        this.namePerson = namePerson;
+        this.emailPerson = emailPerson;
+    }
+
+    public Person(int idPerson, String namePerson, String emailPerson) {
+        super();
+        this.idPerson = idPerson;
+        this.namePerson = namePerson;
+        this.emailPerson = emailPerson;
+    }
+
+    public int getIdPerson() {
+        return this.idPerson;
+    }
+
+    public void setIdPerson(int idPerson) {
+        this.idPerson = idPerson;
+    }
+
+    public String getNamePerson() {
+        return this.namePerson;
+    }
+
+    public void setNamePerson(String namePerson) {
+        this.namePerson = namePerson;
+    }
+
+    public String getEmailPerson() {
+        return this.emailPerson;
+    }
+
+    public void setEmailPerson(String emailPerson) {
+        this.emailPerson = emailPerson;
+    }
+
+}
