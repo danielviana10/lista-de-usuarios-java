@@ -1,6 +1,5 @@
 package com.danielviana;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,9 +12,9 @@ public class Main {
 
         try {
             // Incluir pessoa
-            // Person p1 = new Person(1, "Daniel", "daniel@gmail.com");
-            // Person p2 = new Person(2, "Matheus", "matheus@gmail.com");
-            // Person p3 = new Person(3, "Miguel", "miguel@gmail.com");
+            // Person p1 = new Person("Daniel", "daniel@gmail.com");
+            // Person p2 = new Person("Matheus", "matheus@gmail.com");
+            // Person p3 = new Person("Miguel", "miguel@gmail.com");
             // Person p4 = new Person("Denir", "denir@gmail.com");
             // Person p5 = new Person("Mislene", "mislene@gmail.com");
             // pd.insertPerson(p1);
@@ -34,16 +33,16 @@ public class Main {
             //         logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
             //     }
             // }
-            Person per = pd.getPersonById(2);
-
-            pd.deletePerson(per);
-
-            List<Person> getAllPersons = pd.getAllPersons();
-
-            for (Person p : getAllPersons) {
-                logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
-            }
-
+            // Excluir pessoa
+            // Person per = pd.getPersonById(2);
+            // pd.deletePerson(per);
+            // List<Person> getAllPersons = pd.getAllPersons();
+            // for (Person p : getAllPersons) {
+            //     logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
+            // }
+            // Obter pessoa por ID
+            Person p = pd.getPersonById(4);
+            logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Erro no serviço main", e);
         }
