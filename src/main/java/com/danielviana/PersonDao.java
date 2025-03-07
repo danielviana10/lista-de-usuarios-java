@@ -47,6 +47,7 @@ public class PersonDao extends Dao {
     public Person getPersonById(int cod) throws Exception {
         open();
         stmt = con.prepareStatement("SELECT id, name, email FROM person WHERE id = ?");
+        stmt.setInt(1, cod);
         rs = stmt.executeQuery();
         Person p = null;
         if (rs.next()) {
@@ -54,6 +55,8 @@ public class PersonDao extends Dao {
             p.setIdPerson(rs.getInt("id"));
             p.setNamePerson(rs.getString("name"));
             p.setEmailPerson(rs.getString("email"));
+        } else {
+            logger.log(Level.WARNING, "Pessoa não encontrada com código: {0}", cod);
         }
         close();
         return p;

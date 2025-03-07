@@ -1,5 +1,6 @@
 package com.danielviana;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,12 +17,24 @@ public class Main {
             // Person p2 = new Person(2, "Matheus", "matheus@gmail.com");
             // Person p3 = new Person(3, "Miguel", "miguel@gmail.com");
             // Person p4 = new Person("Denir", "denir@gmail.com");
-            Person p5 = new Person("Mislene", "mislene@gmail.com");
+            // Person p5 = new Person("Mislene", "mislene@gmail.com");
             // pd.insertPerson(p1);
             // pd.insertPerson(p2);
             // pd.insertPerson(p3);
             // pd.insertPerson(p4);
-            pd.insertPerson(p5);
+            // pd.insertPerson(p5);
+
+            // Alterar pessoa
+            Person per = pd.getPersonById(3);
+            if (per != null) {
+                per.setEmailPerson("mislene1@gmail.com");
+                pd.updatePerson(per);
+
+                List<Person> getAllPersons = pd.getAllPersons();
+                for (Person p : getAllPersons) {
+                    logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
+                }
+            }
 
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Erro no serviço main", e);
