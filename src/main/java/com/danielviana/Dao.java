@@ -19,11 +19,10 @@ public class Dao {
     public void open() {
         String url = "jdbc:postgresql://localhost:5432/registrations";
         String user = "postgres";
-        String password = "digiteSuaSenha";
+        String password = "suaSenha";
 
         try {
             con = DriverManager.getConnection(url, user, password);
-            logger.info("Conexão estabelecida com sucesso!");
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, "Erro ao conectar ao banco de dados: {0}", ex.getMessage());
         }
@@ -33,7 +32,6 @@ public class Dao {
         try {
             if (con != null && !con.isClosed()) {
                 con.close();
-                logger.info("Conexão fechada com sucesso!");
             }
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, "Erro ao fechar a conexão: {0}", ex.getMessage());

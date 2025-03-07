@@ -25,15 +25,23 @@ public class Main {
             // pd.insertPerson(p5);
 
             // Alterar pessoa
-            Person per = pd.getPersonById(3);
-            if (per != null) {
-                per.setEmailPerson("mislene1@gmail.com");
-                pd.updatePerson(per);
+            // Person per = pd.getPersonById(3);
+            // if (per != null) {
+            //     per.setEmailPerson("mislene1@gmail.com");
+            //     pd.updatePerson(per);
+            //     List<Person> getAllPersons = pd.getAllPersons();
+            //     for (Person p : getAllPersons) {
+            //         logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
+            //     }
+            // }
+            Person per = pd.getPersonById(2);
 
-                List<Person> getAllPersons = pd.getAllPersons();
-                for (Person p : getAllPersons) {
-                    logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
-                }
+            pd.deletePerson(per);
+
+            List<Person> getAllPersons = pd.getAllPersons();
+
+            for (Person p : getAllPersons) {
+                logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
             }
 
         } catch (Exception e) {
