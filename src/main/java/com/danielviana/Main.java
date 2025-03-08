@@ -53,33 +53,32 @@ public class Main {
             // pd.insertPerson(p5);
 
             // Alterar pessoa
-            Person per = pd.getPersonById(4);
-            per.setEmailPerson("daniel1@gmail.com");
-            if (pd.updatePerson(per)) {
-                logger.info("Pessoa alterada com sucesso!");
-            }
-            List<Person> getAllPersons = pd.getAllPersons();
-            for (Person p : getAllPersons) {
-                logger.info(String.format("ID: %d, Nome: %s, Email: %s", p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()));
-            }
-
+            // Person per = pd.getPersonById(39);
+            // per.setEmailPerson("daniel1@gmail.com");
+            // if (pd.updatePerson(per)) {
+            //     logger.info("Pessoa alterada com sucesso!");
+            // }
+            // List<Person> getAllPersons = pd.getAllPersons();
+            // for (Person p : getAllPersons) {
+            //     logger.info(String.format("ID: %d, Nome: %s, Email: %s", p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()));
+            // }
             // Excluir pessoa
-            // Person per = pd.getPersonById(2);
+            // Person per = pd.getPersonById(40);
             // pd.deletePerson(per);
             // List<Person> getAllPersons = pd.getAllPersons();
             // for (Person p : getAllPersons) {
             //     logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
             // }
             // Obter pessoa por ID
-            // Person p = pd.getPersonById(4);
+            // Person p = pd.getPersonById(39);
             // logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
             // Listar todas as pessoas
-            // List<Person> listOfPersons = pd.getAllPersons();
-            // logger.info("-------------------------------------------------");
-            // for (Person p : listOfPersons) {
-            //     logger.info(String.format("ID: %d, Nome: %s, Email: %s", p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()));
-            //     logger.info("-------------------------------------------------");
-            // }
+            List<Person> listOfPersons = pd.getAllPersons();
+            logger.info("-------------------------------------------------");
+            for (Person p : listOfPersons) {
+                logger.info(String.format("ID: %d, Nome: %s, Email: %s", p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()));
+                logger.info("-------------------------------------------------");
+            }
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Erro no serviço main", e);
         }
