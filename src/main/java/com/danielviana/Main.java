@@ -1,13 +1,42 @@
 package com.danielviana;
 
+import java.util.List;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
 import java.util.logging.Level;
+import java.util.logging.LogRecord;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 public class Main {
 
     private static final Logger logger = Logger.getLogger(Main.class.getName());
 
+    private static void removerFormatoPadrao() {
+        Logger rootLogger = Logger.getLogger("");
+        Handler[] handlers = rootLogger.getHandlers();
+
+        for (Handler handler : handlers) {
+            if (handler instanceof ConsoleHandler) {
+                handler.setFormatter(new SimpleFormatter() {
+                    @Override
+                    public String format(LogRecord recorded) {
+                        String message = recorded.getMessage();
+                        Object[] parameters = recorded.getParameters();
+                        if (parameters != null && parameters.length > 0) {
+                            message = java.text.MessageFormat.format(message, parameters);
+                        }
+                        return message + System.lineSeparator();
+                    }
+                });
+            }
+        }
+    }
+
     public static void main(String[] args) {
+
+        removerFormatoPadrao();
+
         PersonDao pd = new PersonDao();
 
         try {
@@ -24,15 +53,16 @@ public class Main {
             // pd.insertPerson(p5);
 
             // Alterar pessoa
-            // Person per = pd.getPersonById(3);
-            // if (per != null) {
-            //     per.setEmailPerson("mislene1@gmail.com");
-            //     pd.updatePerson(per);
-            //     List<Person> getAllPersons = pd.getAllPersons();
-            //     for (Person p : getAllPersons) {
-            //         logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
-            //     }
-            // }
+            Person per = pd.getPersonById(4);
+            per.setEmailPerson("daniel1@gmail.com");
+            if (pd.updatePerson(per)) {
+                logger.info("Pessoa alterada com sucesso!");
+            }
+            List<Person> getAllPersons = pd.getAllPersons();
+            for (Person p : getAllPersons) {
+                logger.info(String.format("ID: %d, Nome: %s, Email: %s", p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()));
+            }
+
             // Excluir pessoa
             // Person per = pd.getPersonById(2);
             // pd.deletePerson(per);
@@ -41,8 +71,15 @@ public class Main {
             //     logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
             // }
             // Obter pessoa por ID
-            Person p = pd.getPersonById(4);
-            logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
+            // Person p = pd.getPersonById(4);
+            // logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
+            // Listar todas as pessoas
+            // List<Person> listOfPersons = pd.getAllPersons();
+            // logger.info("-------------------------------------------------");
+            // for (Person p : listOfPersons) {
+            //     logger.info(String.format("ID: %d, Nome: %s, Email: %s", p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()));
+            //     logger.info("-------------------------------------------------");
+            // }
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Erro no serviço main", e);
         }

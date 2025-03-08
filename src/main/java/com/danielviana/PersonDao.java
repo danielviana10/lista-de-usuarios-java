@@ -24,15 +24,23 @@ public class PersonDao extends Dao {
         close();
     }
 
-    public void updatePerson(Person p) throws Exception {
+    public boolean updatePerson(Person p) throws Exception {
         open();
         stmt = con.prepareStatement("UPDATE person SET name = ?, email = ? WHERE id = ?");
-        stmt.setString(1, p.getNamePerson());
-        stmt.setString(2, p.getEmailPerson());
-        stmt.setInt(3, p.getIdPerson());
-        stmt.execute();
+        try {
+            stmt.setString(1, p.getNamePerson());
+            stmt.setString(2, p.getEmailPerson());
+            stmt.setInt(3, p.getIdPerson());
+            stmt.execute();
+        } catch (SQLException ex) {
+            logger.log(Level.INFO, "Erro ao atualizar pessoa: {0}", ex.getMessage());
+            stmt.close();
+            close();
+            return false;
+        }
         stmt.close();
         close();
+        return true;
     }
 
     public void deletePerson(Person p) throws Exception {
@@ -65,7 +73,7 @@ public class PersonDao extends Dao {
     public List<Person> getAllPersons() throws Exception {
         try {
             open();
-            stmt = con.prepareStatement("SELECT id, name, email FROM person");
+            stmt = con.prepareStatement("SELECT id, name, email FROM person ORDER BY id");
             rs = stmt.executeQuery();
             List<Person> listPersons = new ArrayList<>();
             while (rs.next()) {
