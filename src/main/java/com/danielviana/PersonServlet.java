@@ -65,15 +65,10 @@ public class PersonServlet extends HttpServlet {
 
         try {
             switch (action) {
-                case "/updatePerson":
-                    updatePerson(request, response);
-                    break;
-                default:
-                    listPersons(request, response);
-                    break;
+                case "/updatePerson" -> updatePerson(request, response);
+                default -> listPersons(request, response);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao processar a requisição.");
         }
     }

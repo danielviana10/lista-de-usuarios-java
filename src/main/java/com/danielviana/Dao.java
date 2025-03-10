@@ -22,7 +22,6 @@ public class Dao {
         String password = "Natura@10";
 
         try {
-            Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(url, user, password);
 
             if (con != null) {
@@ -30,8 +29,6 @@ public class Dao {
             } else {
                 logger.log(Level.SEVERE, "Falha ao estabelecer conexão com o banco de dados.");
             }
-        } catch (ClassNotFoundException ex) {
-            logger.log(Level.SEVERE, "Driver do PostgreSQL não encontrado: {0}", ex.getMessage());
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, "Erro ao conectar ao banco de dados: {0}", ex.getMessage());
         }
