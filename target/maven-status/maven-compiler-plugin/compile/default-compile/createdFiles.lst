@@ -1,1 +1,5 @@
+com\danielviana\PersonDao.class
 com\danielviana\Dao.class
+com\danielviana\Main.class
+com\danielviana\PersonServlet.class
+com\danielviana\Person.class

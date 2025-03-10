@@ -1,41 +1,14 @@
 package com.danielviana;
 
 import java.util.List;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Handler;
 import java.util.logging.Level;
-import java.util.logging.LogRecord;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 public class Main {
 
     private static final Logger logger = Logger.getLogger(Main.class.getName());
 
-    private static void removerFormatoPadrao() {
-        Logger rootLogger = Logger.getLogger("");
-        Handler[] handlers = rootLogger.getHandlers();
-
-        for (Handler handler : handlers) {
-            if (handler instanceof ConsoleHandler) {
-                handler.setFormatter(new SimpleFormatter() {
-                    @Override
-                    public String format(LogRecord recorded) {
-                        String message = recorded.getMessage();
-                        Object[] parameters = recorded.getParameters();
-                        if (parameters != null && parameters.length > 0) {
-                            message = java.text.MessageFormat.format(message, parameters);
-                        }
-                        return message + System.lineSeparator();
-                    }
-                });
-            }
-        }
-    }
-
     public static void main(String[] args) {
-
-        removerFormatoPadrao();
 
         PersonDao pd = new PersonDao();
 
