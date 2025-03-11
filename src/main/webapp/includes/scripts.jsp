@@ -1,5 +1,4 @@
 <script>
-    // exclusão
     const deleteButtons = document.querySelectorAll('.delete-button');
     deleteButtons.forEach(button => {
         button.addEventListener('click', function () {
@@ -9,7 +8,6 @@
         });
     });
 
-    // edição
     const editButtons = document.querySelectorAll('.edit-button');
     editButtons.forEach(button => {
         button.addEventListener('click', function () {

@@ -26,6 +26,7 @@ public class Dao {
 
             if (con != null) {
                 logger.log(Level.INFO, "Conexão com o banco de dados estabelecida com sucesso!");
+                createTableIfNotExists();
             } else {
                 logger.log(Level.SEVERE, "Falha ao estabelecer conexão com o banco de dados.");
             }
@@ -56,5 +57,22 @@ public class Dao {
             throw new SQLException("Conexão não está aberta. Chame o método open() primeiro.");
         }
         return con.prepareStatement(sql);
+    }
+
+    private void createTableIfNotExists() {
+        String sql = "CREATE TABLE IF NOT EXISTS person ("
+                + "id SERIAL PRIMARY KEY, "
+                + "name VARCHAR(30) NOT NULL, "
+                + "surname VARCHAR(50) NOT NULL, "
+                + "email VARCHAR(40) NOT NULL, "
+                + "password VARCHAR(100) NOT NULL, "
+                + "role VARCHAR(20) NOT NULL);";
+
+        try (PreparedStatement stmtStart = con.prepareStatement(sql)) {
+            stmtStart.execute();
+            logger.log(Level.INFO, "Tabela 'person' verificada/criada com sucesso.");
+        } catch (SQLException ex) {
+            logger.log(Level.SEVERE, "Erro ao criar a tabela 'person': {0}", ex.getMessage());
+        }
     }
 }
