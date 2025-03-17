@@ -1,4 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.danielviana.AppTest
 -------------------------------------------------------------------------------
+<<<<<<< HEAD
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.162 s -- in com.danielviana.AppTest
+=======
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.156 s -- in com.danielviana.AppTest
+>>>>>>> 527cf7bd9330177117af1243f954f486440607d5

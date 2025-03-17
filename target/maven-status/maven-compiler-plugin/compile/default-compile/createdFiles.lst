@@ -1,5 +1,8 @@
+com\danielviana\JwtUtil.class
+com\danielviana\Person.class
+com\danielviana\LoginServlet.class
 com\danielviana\PersonDao.class
 com\danielviana\Dao.class
 com\danielviana\Main.class
 com\danielviana\PersonServlet.class
-com\danielviana\Person.class
+com\danielviana\AuthFilter.class
