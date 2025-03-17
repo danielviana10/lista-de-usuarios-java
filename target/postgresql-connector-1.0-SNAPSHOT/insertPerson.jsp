@@ -4,18 +4,24 @@
     <title>Inserir Pessoa</title>
 </head>
 <body>
-    <h1>Inserir Nova Pessoa</h1>
-    <form action="insertPerson" method="post">
-        <label for="name">Nome:</label>
-        <input type="text" id="name" name="name" required><br><br>
+    <jsp:include page="header.jsp" />
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+    <div class="container">
+        <h1 class="my-4">Inserir Nova Pessoa</h1>
+        <form action="insertPerson" method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nome:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-success">Salvar</button>
+        </form>
+    </div>
 
-        <button type="submit">Salvar</button>
-    </form>
-
-    <br>
-    <a href="persons.jsp">Voltar para a lista de pessoas</a>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

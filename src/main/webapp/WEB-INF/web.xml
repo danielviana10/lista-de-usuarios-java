@@ -15,6 +15,11 @@
 
     <servlet-mapping>
         <servlet-name>PersonServlet</servlet-name>
+        <url-pattern>/insertPerson</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PersonServlet</servlet-name>
         <url-pattern>/editPerson</url-pattern>
     </servlet-mapping>
 

@@ -19,7 +19,8 @@ public class PersonDao extends Dao {
             stmt.setString(2, p.getEmailPerson());
             stmt.execute();
 
-            logger.log(Level.INFO, "Pessoa inserida com sucesso: {0} ({1})", new Object[]{p.getNamePerson(), p.getEmailPerson()});
+            logger.log(Level.INFO, "Pessoa inserida com sucesso: {0} ({1})",
+                    new Object[] { p.getNamePerson(), p.getEmailPerson() });
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Erro ao inserir pessoa: {0}", e.getMessage());
             throw new Exception("Erro ao inserir pessoa", e);
@@ -51,6 +52,7 @@ public class PersonDao extends Dao {
             open();
             stmt = con.prepareStatement("DELETE FROM person WHERE id = ?");
             stmt.setInt(1, p.getIdPerson());
+            logger.info("Excluindo pessoa com ID: " + p.getIdPerson());
             stmt.execute();
             logger.info("Pessoa excluída com sucesso.");
         } catch (SQLException e) {

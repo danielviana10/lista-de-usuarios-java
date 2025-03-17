@@ -35,7 +35,7 @@
                                 data-id="${person.idPerson}" 
                                 data-name="${person.namePerson}" 
                                 data-email="${person.emailPerson}">
-                                  <i class="bi bi-pencil"></i>
+                                    <i class="bi bi-pencil"></i>
                             </a>
                         </td>
                         <td>
@@ -44,7 +44,7 @@
                                 data-bs-toggle="modal" 
                                 data-bs-target="#confirmDeleteModal" 
                                 data-id="${person.idPerson}">
-                                  <i class="bi bi-trash"></i>
+                                    <i class="bi bi-trash"></i>
                             </a>
                         </td>
                     </tr>
