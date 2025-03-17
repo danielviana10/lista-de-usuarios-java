@@ -17,9 +17,9 @@ public class Dao {
     ResultSet rs;
 
     public void open() {
-        String url = "jdbc:postgresql://localhost:5432/registrations";
-        String user = "postgres";
-        String password = "Natura@10";
+        String url = "jdbc:postgresql://localhost:5432/seuBancoDeDados";
+        String user = "seuUsuario";
+        String password = "suaSenha";
 
         try {
             con = DriverManager.getConnection(url, user, password);
