@@ -10,7 +10,7 @@
 
     <servlet-mapping>
         <servlet-name>PersonServlet</servlet-name>
-        <url-pattern>/persons</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

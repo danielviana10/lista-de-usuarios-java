@@ -29,12 +29,13 @@ public class PersonServlet extends HttpServlet {
 
         try {
             switch (action) {
-                case "/persons" -> listPersons(request, response);
+                case "/", "/persons" -> listPersons(request, response);
                 case "/editPerson" -> showEditForm(request, response);
                 case "/deletePerson" -> deletePerson(request, response);
                 default -> listPersons(request, response);
             }
         } catch (Exception e) {
+            logger.log(Level.SEVERE, String.format("Erro ao processar a requisição: %s", action), e);
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao processar a requisição.");
         }
     }
@@ -51,7 +52,7 @@ public class PersonServlet extends HttpServlet {
                 default -> listPersons(request, response);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.log(Level.SEVERE, String.format("Erro ao processar a requisição: %s", action), e);
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Erro ao processar a requisição.");
         }
     }
@@ -91,10 +92,10 @@ public class PersonServlet extends HttpServlet {
             Person person = new Person();
             person.setIdPerson(id);
             personDao.deletePerson(person);
-            logger.info("Pessoa excluída com sucesso. ID: " + id);
+            logger.log(Level.INFO, "Pessoa excluída com sucesso. ID: {0}", id);
             response.sendRedirect("persons");
         } catch (NumberFormatException e) {
-            logger.log(Level.SEVERE, "Erro ao converter ID: " + request.getParameter("id"), e);
+            logger.log(Level.SEVERE, String.format("Erro ao converter ID: %s", request.getParameter("id")), e);
             throw new Exception("ID inválido: " + request.getParameter("id"), e);
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Erro ao excluir pessoa", e);
