@@ -4,15 +4,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 public class Main {
 
     private static final Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
 
-        // PersonDao pd = new PersonDao();
+        PersonDao pd = new PersonDao();
 
         try {
             // Incluir pessoa
@@ -51,13 +49,13 @@ public class Main {
             // logger.log(Level.INFO, "ID: {0}, Nome: {1}, Email: {2}", new
             // Object[]{p.getIdPerson(), p.getNamePerson(), p.getEmailPerson()});
             // Listar todas as pessoas
-            // List<Person> listOfPersons = pd.getAllPersons();
-            // logger.info("-------------------------------------------------");
-            // for (Person p : listOfPersons) {
-            // logger.info(String.format("ID: %d, Nome: %s, Email: %s", p.getIdPerson(),
-            // p.getNamePerson(), p.getEmailPerson()));
-            // logger.info("-------------------------------------------------");
-            // }
+            List<Person> listOfPersons = pd.getAllPersons();
+            logger.info("-------------------------------------------------");
+            for (Person p : listOfPersons) {
+                logger.info(String.format("ID: %d, Nome: %s, Email: %s", p.getIdPerson(),
+                        p.getNamePerson(), p.getEmailPerson()));
+                logger.info("-------------------------------------------------");
+            }
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Erro no serviço main", e);
         }

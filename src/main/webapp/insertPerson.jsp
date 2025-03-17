@@ -16,23 +16,8 @@
                 <input type="text" id="name" name="name" class="form-control" required>
             </div>
             <div class="mb-3">
-                <label for="surname" class="form-label">Sobrenome:</label>
-                <input type="text" id="surname" name="surname" class="form-control" required>
-            </div>
-            <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
                 <input type="email" id="email" name="email" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Senha:</label>
-                <input type="password" id="password" name="password" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="role" class="form-label">Cargo:</label>
-                <select id="role" name="role" class="form-select" required>
-                    <option value="USER">Usuário</option>
-                    <option value="ADMIN">Administrador</option>
-                </select>
             </div>
             <button type="submit" class="btn btn-primary">Salvar</button>
             <a href="persons" class="btn btn-secondary">Cancelar</a>
